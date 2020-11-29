@@ -1,6 +1,6 @@
 <?php
 
-namespace Foamzou\EasyJsonSchema\Manager;
+namespace Djx\EasyJsonSchema\Manager;
 
 use Opis\JsonSchema\{
     Validator as OpisValidator, ValidationError, Schema

@@ -1,28 +1,38 @@
 <?php
 
-namespace Foamzou\EasyJsonSchema\Type;
+namespace Djx\EasyJsonSchema\Type;
 
-use Foamzou\EasyJsonSchema\Manager\Parser;
+
+use Djx\EasyJsonSchema\Manager\Parser;
 
 class Base
 {
+
     const UNDEFINED = '#value.undefined';
 
     protected $default = self::UNDEFINED;
+
     protected $description = self::UNDEFINED;
 
     protected $anyOf = self::UNDEFINED;
+
     protected $oneOf = self::UNDEFINED;
+
     protected $allOf = self::UNDEFINED;
 
     protected $if = self::UNDEFINED;
+
     protected $then = self::UNDEFINED;
+
     protected $else = self::UNDEFINED;
+
     protected $not = self::UNDEFINED;
+
+    protected $mock = self::UNDEFINED;
 
     public function toSchema()
     {
-        $obj = new \ReflectionClass(get_called_class());
+        $obj        = new \ReflectionClass(get_called_class());
         $properties = $obj->getProperties();
 
         $output = [];
@@ -31,17 +41,29 @@ class Base
             $output['description'] = $this->description;
         }
 
+        if ($this->mock !== self::UNDEFINED) {
+            $output['mock'] = $this->mock;
+        }
+
         foreach ($properties as $property) {
             $propertyName = $property->getName();
 
-            if ($this instanceof Obj && $propertyName == 'properties' && $this->$propertyName !== self::UNDEFINED) {
+            if ($this instanceof Obj && $propertyName == 'properties'
+                && $this->$propertyName !== self::UNDEFINED) {
                 $output['properties'] = [];
                 foreach ($this->$propertyName as $propName => $prop) {
-                    $output['properties'][$propName] = Parser::parse($prop, $propName, $this);
+                    $output['properties'][$propName] = Parser::parse(
+                      $prop,
+                      $propName,
+                      $this
+                    );
                 }
-
             } elseif ($this->$propertyName !== self::UNDEFINED) {
-                $output[$propertyName] = Parser::parse($this->$propertyName, $propertyName, $this);
+                $output[$propertyName] = Parser::parse(
+                  $this->$propertyName,
+                  $propertyName,
+                  $this
+                );
             }
         }
 
@@ -57,6 +79,12 @@ class Base
     public function desc($v)
     {
         $this->description = $v;
+        return $this;
+    }
+
+    public function mock($v)
+    {
+        $this->mock = ['mock' => $v];
         return $this;
     }
 
@@ -101,4 +129,5 @@ class Base
         $this->not = $v;
         return $this;
     }
+
 }

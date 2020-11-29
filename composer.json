@@ -1,9 +1,9 @@
 {
-    "name": "foamzou/easy-json-schema",
+    "name": "djx/easy-json-schema",
     "authors": [
         {
-            "name": "foamzou",
-            "email": "woshizoufeng@qq.com"
+            "name": "djx",
+            "email": "xianggege520@vip.qq.com"
         }
     ],
     "require": {
@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Foamzou\\EasyJsonSchema\\": "src/",
+            "Djx\\EasyJsonSchema\\": "src/",
             "Demo\\": "demo/"
         }
     },

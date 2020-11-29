@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\TestCase;
 use Foamzou\EasyJsonSchema\Manager\Validator;
 use Foamzou\EasyJsonSchema\Manager\Parser;
 
+use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase
 {

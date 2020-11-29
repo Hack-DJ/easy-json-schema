@@ -1,23 +1,31 @@
 <?php
 
-namespace Foamzou\EasyJsonSchema\Type;
+namespace Djx\EasyJsonSchema\Type;
 
 class Obj extends Base
 {
+
     protected $type = 'object';
 
     protected $properties = self::UNDEFINED;
+
     protected $required = self::UNDEFINED;
+
     protected $dependencies = self::UNDEFINED;
+
     protected $minProperties = self::UNDEFINED;
+
     protected $maxProperties = self::UNDEFINED;
+
     protected $propertyNames = self::UNDEFINED;
+
     protected $patternProperties = self::UNDEFINED;
+
     protected $additionalProperties = self::UNDEFINED;
 
     public function __construct(array $propList = [])
     {
-        $this->properties = empty($propList) ? self::UNDEFINED : $propList;
+        $this->properties = empty($propList) ? [] : $propList;
         return $this;
     }
 
@@ -29,7 +37,7 @@ class Obj extends Base
 
     public function requiredAll()
     {
-        $this->required = array_keys($this->properties);
+        $this->required = array_keys($this->properties );
         return $this;
     }
 

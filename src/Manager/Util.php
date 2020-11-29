@@ -1,6 +1,6 @@
 <?php
 
-namespace Foamzou\EasyJsonSchema\Manager;
+namespace Djx\EasyJsonSchema\Manager;
 
 
 class Util

@@ -1,6 +1,6 @@
 <?php
 
-namespace Foamzou\EasyJsonSchema\Type;
+namespace Djx\EasyJsonSchema\Type;
 
 class Num extends Base
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Foamzou\EasyJsonSchema\Keyword;
+namespace Djx\EasyJsonSchema\Keyword;
 
 
 class Kif extends Base

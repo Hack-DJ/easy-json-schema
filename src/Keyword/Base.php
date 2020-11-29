@@ -1,15 +1,22 @@
 <?php
 
-namespace Foamzou\EasyJsonSchema\Keyword;
+namespace Djx\EasyJsonSchema\Keyword;
 
-use Foamzou\EasyJsonSchema\Manager\Parser;
+use Djx\EasyJsonSchema\Manager\Parser;
 
 class Base
 {
+
     private $description = '';
+
+    private $mock = '';
+
     private $value;
+
     protected $keyword;
+
     protected $else;
+
     protected $then;
 
     public function __construct($value)
@@ -20,6 +27,12 @@ class Base
     public function desc($v)
     {
         $this->description = $v;
+        return $this;
+    }
+
+    public function mock($v)
+    {
+        $this->mock = $v;
         return $this;
     }
 
@@ -35,7 +48,12 @@ class Base
         }
         if (!($this instanceof Enum) && !($this instanceof Constant)) {
             if (is_array($this->value)) {
-                $schema[$this->keyword] = array_map(function($obj){return Parser::parse($obj);}, $this->value);
+                $schema[$this->keyword] = array_map(
+                  function ($obj) {
+                      return Parser::parse($obj);
+                  },
+                  $this->value
+                );
             } else {
                 $schema[$this->keyword] = Parser::parse($this->value);
             }
@@ -51,11 +69,12 @@ class Base
         if (empty($this->else) || empty($this->then)) {
             throw new \Exception('missing else or then');
         }
-        $schema = [];
+        $schema         = [];
         $schema['if']   = Parser::parse($this->value);
         $schema['then'] = Parser::parse($this->then);
         $schema['else'] = Parser::parse($this->else);
 
         return $schema;
     }
+
 }

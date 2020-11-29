@@ -1,11 +1,11 @@
 <?php
 
-namespace Foamzou\EasyJsonSchema\Manager;
+namespace Djx\EasyJsonSchema\Manager;
 
-use Foamzou\EasyJsonSchema\Keyword\Enum;
-use Foamzou\EasyJsonSchema\Type\Base as TypeBase;
-use Foamzou\EasyJsonSchema\Keyword\Base as KeywordBase;
-use Foamzou\EasyJsonSchema\Type\Obj;
+use Djx\EasyJsonSchema\Keyword\Enum;
+use Djx\EasyJsonSchema\Type\Base as TypeBase;
+use Djx\EasyJsonSchema\Keyword\Base as KeywordBase;
+use Djx\EasyJsonSchema\Type\Obj;
 
 class Parser
 {
